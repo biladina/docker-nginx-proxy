@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+  nginx-letsencrypt:
+    image: nginxproxy/acme-companion
+    container_name: nginx-letsencrypt
+    depends_on:
+      - nginx-proxy
+      - nginx-gen
+    restart: always
+    volumes_from:
+      - nginx-proxy:rw
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./acme:/etc/acme.sh
+    environment:
+      DEFAULT_EMAIL: "user@mail.com"
+      NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
+      NGINX_PROXY_CONTAINER: "nginx-proxy"
+
+networks:
+  default:
+    name: nginx-proxy
+    external: true

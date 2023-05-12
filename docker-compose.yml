@@ -1,0 +1,43 @@
+version: '3.2'
+
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./conf.d/set_timeout.conf:/etc/nginx/conf.d/set_timeout.conf
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+      - ./certs:/etc/nginx/certs
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      HTTPS_METHOD: https
+
+  nginx-gen:
+    image: nginxproxy/docker-gen
+    command: -notify-sighup nginx -watch -only-exposed /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+    container_name: nginx-gen
+    depends_on:
+      - nginx-proxy
+    restart: always
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+      - ./certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./templates/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+
+networks:
+  default:
+    name: nginx-proxy
+    external: true
