@@ -36,7 +36,7 @@
 1. create docker network with name `nginx-proxy`
 
 	```bash
-	docker network create -d bridge
+	docker network create -d bridge nginx-proxy
 	```
 
 2. go to your docker compose file in your project, add this line to your docker compose environment:
