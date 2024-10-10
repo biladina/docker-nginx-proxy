@@ -1,5 +1,5 @@
 ## DEVELOPMENT ONLY
-1. you can create your own local domain, eg. aplikasi.test and setting up the local domain using your OS localhost domain
+1. you can create your own local domain, eg. `aplikasi.test` and setting up the local domain using your OS localhost domain
 
 2. if you need HTTPS support, use this site to create custom SSL certificate for your local domain: [https://regery.com/en/security/ssl-tools/self-signed-certificate-generator](https://regery.com/en/security/ssl-tools/self-signed-certificate-generator)
 
