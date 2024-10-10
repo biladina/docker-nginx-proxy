@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   nginx-proxy:
-    image: nginxproxy/nginx-proxy
+    image: nginxproxy/nginx-proxy:alpine
     container_name: nginx-proxy
     restart: always
     logging:
@@ -20,7 +20,7 @@ services:
       - ./certs:/etc/nginx/certs
       - /var/run/docker.sock:/tmp/docker.sock:ro
     environment:
-      HTTPS_METHOD: https
+      TRUST_DOWNSTREAM_PROXY: false
 
   nginx-gen:
     image: nginxproxy/docker-gen
