@@ -29,7 +29,9 @@
 
 7. if you don't need HTTPS support, you can skip step 2-6
 
-8. if you never run this project before, go to [RUN PROJECT](#run-project)
+8. after that, you can run/rebuild your own container project
+
+9. if you never run this project before, go to [RUN PROJECT](#run-project)
 
 
 ## RUN PROJECT
@@ -70,3 +72,4 @@
 	docker compose -f docker-compose.yml -f docker-compose-prod.yml build --no-cache && docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d
 	```
 
+4. after that, you can run/rebuild your own container project
