@@ -1,7 +1,9 @@
 ## DEVELOPMENT ONLY
-1. you can create your own local domain, and if you need https support, use this site to create custom SSL certificate for your local domain: [https://regery.com/en/security/ssl-tools/self-signed-certificate-generator](https://regery.com/en/security/ssl-tools/self-signed-certificate-generator)
+1. you can create your own local domain, eg. aplikasi.test and setting up the local domain using your OS localhost domain
 
-2. from step no. 1 you need two things, domain SSL certificate and domain private key. Make sure you rename them using your local domain, example:
+2. if you need HTTPS support, use this site to create custom SSL certificate for your local domain: [https://regery.com/en/security/ssl-tools/self-signed-certificate-generator](https://regery.com/en/security/ssl-tools/self-signed-certificate-generator)
+
+3. from step no. 2 you need two things, domain SSL certificate and domain private key. Make sure you rename them using your local domain, example:
 
 	```bash
 	# your domain is: aplikasi.test
@@ -9,23 +11,25 @@
 	aplikasi.test.key (*.key file is for domain private key)
 	```
 
-3. if you already run this project, you can stop the container by run this command:
+4. if you already run this project, you can stop the container by run this command:
 	
 	```bash
 	docker stop nginx-proxy
 	docker stop nginx-gen
 	```
 
-4. you can copy the .crt and .key file to `certs` directory
+5. you can copy the .crt and .key file to `certs` directory
 
-5. after you copy the .crt and .key file, if you already run this project, you can start again the container by run this command:
+6. after you copy the .crt and .key file, if you already run this project, you can start again the container by run this command:
 	
 	```bash
 	docker start nginx-proxy
 	docker start nginx-gen
 	```
 
-6. if you never run this project before, go to [RUN PROJECT](#run-project)
+7. if you don't need HTTPS support, you can skip step 2-6
+
+8. if you never run this project before, go to [RUN PROJECT](#run-project)
 
 
 ## RUN PROJECT
