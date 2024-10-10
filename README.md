@@ -18,9 +18,9 @@
 	docker stop nginx-gen
 	```
 
-5. you can copy the .crt and .key file to `certs` directory
+5. you can copy the `.crt` and `.key` file to `certs` directory
 
-6. after you copy the .crt and .key file, if you already run this project, you can start again the container by run this command:
+6. after you copy the `.crt` and `.key` file, if you already run this project, you can start again the container by run this command:
 	
 	```bash
 	docker start nginx-proxy
