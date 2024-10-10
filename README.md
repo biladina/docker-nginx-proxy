@@ -51,6 +51,10 @@
 	      VIRTUAL_PORT: 80
 	      LETSENCRYPT_HOST: aplikasi.test # this variable is for production and if you want to use letsencrypt as your SSL certificate authority, skip this variable for development
 	      LETSENCRYPT_EMAIL: use_your_own_mail # this variable is for production and if you want to use letsencrypt as your SSL certificate authority, skip this variable for development
+	networks:
+	  default:
+	    name: nginx-proxy
+	    external: true
 	```
 
 2. for development, use this command to run the proxy container:
